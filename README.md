@@ -15,14 +15,12 @@ An anti-cheat plugin designed to prevent specific types of hacks. This fork adds
 - **Gradle Build System** - Complete build setup with all dependencies
 
 ### 📦 Installation
-1. Download `FoxAddition-Folia.jar` from [Releases](https://github.com/swift-dart/FoxAddition/releases)
+1. Download `FoxAddition.jar` from [Releases](https://github.com/swift-dart/FoxAddition/releases)
 2. Place in `plugins/` folder
 3. Requires: PacketEvents 2.11.0+
 
 ### ✅ Tested On
 - ✅ Folia 1.21.8
-- ✅ Paper 1.21.3
-- ✅ Spigot 1.21+
 
 ---
 
