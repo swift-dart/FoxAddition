@@ -6,7 +6,7 @@
 #              | |  | (_) |>  <  / ____ \| (_| || (_| || || |_ | || (_) || | | |              #
 #              |_|   \___//_/\_\/_/    \_\\__,_| \__,_||_| \__||_| \___/ |_| |_|              #
 #                                                                                             #
-#                                          [v1.2.2]                                           #
+#                                          [v1.2.3]                                           #
 #                                                                                             #
 # ------------------------------------------------------------------------------------------- #
 # If you still has questions, you can join to the discord server in:
@@ -21,6 +21,9 @@ metrics:
 bedrock:
     # List of modules.
     modules:
+        # Alternate option for servers who does not use Floodgate 
+        geyser:
+            enable: true
         # You want try to hook with Floodgate?
         # Automatically detect and hook to floodgate plugin to enable,
         # disable and unlock some features to X edition.
@@ -105,3 +108,55 @@ logs:
         enable: true
         # Specify the number of days to retain log files before cleanup.
         days: 7
+        
+## Hooks
+# Hook some plugins to this anticheat. This allows our anticheat
+# to synchronize with other compatible plugins and provide a better
+# experience with using some features.
+#
+# If you modify any value to enable hook, you need restart the
+# server or you can reload the plugin with Plugman, this support.
+hooks:
+    # DiscordSRV
+    # Allow the plugin to detect the DiscordSRV plugin and send alerts
+    # to a specified channel on the Discord platform. It is recommended
+    # to enable this when you configure the channel to send alerts. If 
+    # you don't configure the channel, this feature will not work.
+    discordsrv:
+        # Do you want to enable this feature?
+        # If the plugin is detected and this option is enabled,
+        # the anticheat will allow the use of DiscordSRV.
+        enable: false
+        # Specify the channel to send alerts to by using its ID.
+        # Modify this before enabling the DiscordSRV hook.
+        channel: 000000000000000000
+        # Some settings, you can modify what is shown in the alerts.
+        show:
+            # Show UUID of the detected user?
+            uuid: true
+            # Show detailed information of the detection?
+            information: true
+            # Show location of the detected user?
+            location: true
+            # Show FoxAddition title?
+            title: true
+        # Modify the titles of all fields here.
+        messages:
+            author: "Alerts"
+            player: "Player"
+            uuid: "UUID"
+            check: "Check"
+            vls: "VLs"
+            location: "Position"
+            information: "Detailed"
+            # This is not a title, but here you can set a message
+            # to send with the embed in "content". You can use this to
+            # mention a role or add any other message.
+            # (!) This send a message before the embed.
+            #
+            # Disable this only leaving:
+            # content: ""
+            #
+            # You don't know how to mention a role? Check:
+            # https://www.youtube.com/watch?v=2PfA-Y02TlA
+            content: ""

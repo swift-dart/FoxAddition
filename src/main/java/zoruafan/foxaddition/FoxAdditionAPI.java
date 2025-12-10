@@ -45,12 +45,14 @@ import zoruafan.foxaddition.utils.LogManager;
 import zoruafan.foxaddition.utils.TPSUtil;
 import zoruafan.foxaddition.utils.FoxPacketListener;
 import zoruafan.foxaddition.utils.VLSystem;
+import zoruafan.foxaddition.utils.DiscordSRVManager;
 
 public enum FoxAdditionAPI {
     INSTANCE;
 	private JavaPlugin plugin;
 	private FilesManager files;
 	private VLSystem vlsystem;
+	private DiscordSRVManager dsrv;
 	private GeyserManager geyser;
 	private LogManager log;
 	private List<CommandSender> verboseL = new ArrayList<>();
@@ -100,7 +102,8 @@ public enum FoxAdditionAPI {
                 Bukkit.getServer().getPluginManager().registerEvents((Listener) obj, plugin);
             }
         }
-        vlsystem = new VLSystem();
+		this.dsrv = new DiscordSRVManager();
+        this.vlsystem = new VLSystem();
 	}
 	
 	protected void disable(JavaPlugin plugin) {
@@ -181,6 +184,7 @@ public enum FoxAdditionAPI {
 	public VLSystem getVL() { return vlsystem; }
 	public GeyserManager getGeyser() { return geyser; }
 	public LogManager getLog() { return log; }
+	public DiscordSRVManager getDSRV() { return this.dsrv; }
     public ServerVersion getVersion() { return PacketEvents.getAPI().getServerManager().getVersion(); }
     public String getClientVersion(Player e) { 
     	User user = PacketEvents.getAPI().getPlayerManager().getUser(e);

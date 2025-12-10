@@ -2,6 +2,7 @@ package zoruafan.foxaddition.utils;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -75,6 +76,9 @@ public class FoxPlayer implements Listener {
     	String bde_f = api.getGeyser().getDevice(e);
     	String bde = bde_f;
     	bde_f = "[device:"+api.getGeyser().getDevice(e)+"]";
+		CompletableFuture.runAsync(() -> {
+			this.api.getDSRV().sendMessageToDiscord(module, e, api.getVLS(e, module), details);
+		});
     	api.verboseNotify(api.getFiles().MN("command.verbose.format", e).replace("{player}", String.valueOf(e.getName())).replace("{vls}", String.valueOf(api.getVLS(e, module))).replace("{vls_added}", String.valueOf(vls)).replace("{module}", name).replace("{details}", details).replace("{debug}", debug).replace("{ver}", ver).replace("{device}", bde_f).replace("{device_noformat}", bde).replace("{server_version}", String.valueOf(api.getVersion())).replace("{foxaddition_version}", api.getPlugin().getDescription().getVersion()).replace("{ping}", String.valueOf(api.getPing(e))).replace("{tps}", String.valueOf(api.getTPS()))); 
     	api.getLog().log(ChatColor.stripColor(api.getFiles().MN("command.verbose.logs", e).replace("{player}", String.valueOf(e.getName())).replace("{vls}", String.valueOf(api.getVLS(e, module))).replace("{vls_added}", String.valueOf(vls)).replace("{module}", name).replace("{details}", details).replace("{debug}", debug).replace("{ver}", ver).replace("{device}", bde_f).replace("{device_noformat}", bde)).replace("{device_noformat}", bde).replace("{server_version}", String.valueOf(api.getVersion())).replace("{foxaddition_version}", api.getPlugin().getDescription().getVersion()).replace("{ping}", String.valueOf(api.getPing(e))).replace("{tps}", String.valueOf(api.getTPS())));
     }
