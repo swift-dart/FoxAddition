@@ -55,7 +55,8 @@ public class FoxPacketListener extends FoliaScheduler implements PacketListener 
         if (IS_FOLIA) {
             player.getScheduler().run(pl, t -> task.run(), null);
         } else {
-            Bukkit.getScheduler().runTask(pl, task);
+            // Run directly on packet thread for Paper (events are marked as async)
+            task.run();
         }
     }
     
